@@ -12,8 +12,12 @@ h1 {
     font-family: alarmFont, Arial, Helvetica, sans-serif;
 }
 
+#main {
+    display: flex;
+}
 
 .box {
+    margin: 5px;
     background-color: white;
     /* offset-x | offset-y | blur-radius | spread-radius | color */
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
