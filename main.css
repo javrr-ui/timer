@@ -3,8 +3,29 @@
     src: url("https://download1512.mediafire.com/wigww88qf8bg/vgoul62x8d9nb6r/DS-DIGI.TTF");
 }
 
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
 
 
 h1 {
     font-family: alarmFont, Arial, Helvetica, sans-serif;
+}
+
+
+.box {
+    background-color: white;
+    /* offset-x | offset-y | blur-radius | spread-radius | color */
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 1px;
+    width: 200px ;
+    height: 300px;
+    text-align: center;
+}
+
+.button {
+    background-color: lightgray;
+    padding: 5px 25px 5px 25px;
+    margin:2px;
+    display: inline-block;
 }
