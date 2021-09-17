@@ -2,16 +2,23 @@ let hours = 0, minutes = 0, seconds = 0;
 const timer1 = document.querySelector("#timer1");
 const startButton = document.querySelector("#start");
 const resetButton = document.querySelector("#reset");
-
+let interval;
 eventListeners();
 
-function eventListeners(){
+function eventListeners() {
     startButton.addEventListener("click", startTimer);
-    resetButton.addEventListener("click",e =>{});
+    resetButton.addEventListener("click", e => { });
 }
 
-function startTimer(){
-    setInterval(timer,1000);
+function startTimer() {
+    
+    if (startButton.textContent == "Start") {
+        interval = setInterval(timer, 1000);
+        startButton.textContent = "Stop";
+    }else{
+        clearInterval(interval);
+        startButton.textContent = "Start";
+    }
 }
 
 function timer() {
