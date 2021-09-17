@@ -33,3 +33,8 @@ h1 {
     margin:2px;
     display: inline-block;
 }
+
+#timer1 {
+    font-family: alarmFont, Arial;
+    font-size: 40px;
+}
