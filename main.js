@@ -6,8 +6,12 @@ const resetButton = document.querySelector("#reset");
 eventListeners();
 
 function eventListeners(){
-    startButton.addEventListener("click", e);
-    resetButton.addEventListener("click",e);
+    startButton.addEventListener("click", startTimer);
+    resetButton.addEventListener("click",e =>{});
+}
+
+function startTimer(){
+    setInterval(timer,1000);
 }
 
 function timer() {
@@ -22,7 +26,8 @@ function timer() {
         minutes = 0;
     }
 
-    console.log(prettyTime())
+    timer1.textContent = prettyTime();
+    //console.log(prettyTime())
 }
 
 
