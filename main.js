@@ -7,7 +7,7 @@ eventListeners();
 
 function eventListeners() {
     startButton.addEventListener("click", startTimer);
-    resetButton.addEventListener("click", e => { });
+    resetButton.addEventListener("click", resetTimer);
 }
 
 function startTimer() {
@@ -19,6 +19,13 @@ function startTimer() {
         clearInterval(interval);
         startButton.textContent = "Start";
     }
+}
+
+function resetTimer(){
+    hours=0;
+    minutes=0;
+    seconds=0;
+    timer1.textContent = "00:00:00";
 }
 
 function timer() {
