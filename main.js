@@ -10,8 +10,30 @@ function timer() {
         seconds = 0;
     }
 
-    if (minutes == 60){
+    if (minutes == 60) {
         hours++;
-        minutes=0;
+        minutes = 0;
     }
+
+    console.log(prettyTime())
 }
+
+
+function prettyTime() {
+    let hourString = hours,
+        minuteString = minutes,
+        secondString = seconds;
+
+    if (hours <= 9) {
+        hourString = "0" + hourString;
+    }
+    if (minutes <= 9) {
+        minuteString = "0" + minuteString;
+    }
+    if (seconds <= 9) {
+        secondString = "0" + secondString;
+    }
+
+    return hourString + ":" + minuteString + ":" + secondString;
+}
+
