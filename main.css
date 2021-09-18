@@ -35,7 +35,7 @@ h1 {
     display: inline-block;
 }
 
-#timer1 {
+.timer {
     font-family: alarmFont, Arial;
     font-size: 40px;
 }
