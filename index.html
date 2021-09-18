@@ -20,7 +20,7 @@
         <div class="box">
             <h3>Versión 2</h3>
             <p>Jugador 1</p>
-            <p id="timerPlayer1" class="timer">00:30:00</p>
+            <p id="timerPlayer1" class="timer">0</p>
             <div class="button" id="resetPlayer1"> Reset</div>
             <div class="button" id="startPlayer1">Start</div>
             <p>Jugador 2</p>
@@ -29,7 +29,18 @@
             <div class="button" id="startPlayer2">Start</div>
         </div>
     </div>
-    
+    <div id="timeModal">
+        <span id="close">✖</span>
+        <form id="timeForm">
+            <label for="hours">Horas</label>
+            <input type="number" name="hours" min="0" max="24">
+            <label for="minutes">Minutos</label>
+            <input type="number" name="minutes" min="0" max="60">
+            <label for="seconds">Segundos</label>
+            <input type="number" name="seconds" min="0" max="60">
+            <input type="submit">
+        </form>
+    </div>
     <script src="main.js"></script>
 </body>
 </html>
