@@ -1,3 +1,3 @@
 # timer
 
-live demo: https://javrr-ui.github.io/timer/
+live demo: <https://javrr-ui.github.io/timer/>
