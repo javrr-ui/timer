@@ -20,9 +20,9 @@ function eventListeners() {
     startButton.addEventListener("click", startTimer);
     resetButton.addEventListener("click", resetTimer);
     //Version 2 timer
-    startButtonPlayer1.addEventListener("click", e => { });
+    startButtonPlayer1.addEventListener("click", timerV2);
     resetButtonPlayer1.addEventListener("click", e => { });
-    startButtonPlayer2.addEventListener("click", e => { });
+    startButtonPlayer2.addEventListener("click", timerV2);
     resetButtonPlayer2.addEventListener("click", e => { });
 
 }
@@ -80,3 +80,41 @@ function prettyTime() {
     return hourString + ":" + minuteString + ":" + secondString;
 }
 
+let inter;
+let intervalStarted = false;
+let startTime = Date.now();
+let lastTime = Date.now();
+let player1 = 10, player2 = 10;
+
+function timerV2(e) {
+    if (intervalStarted) {
+        clearInterval(inter);
+        intervalStarted = false;
+    }
+
+    let playerId = e.srcElement.id;
+
+    let startTime = Date.now();
+    inter = setInterval(() => {
+        if (player2 <= 0 || player1 <= 0) {
+            clearInterval(inter);
+            return;
+        }
+
+        intervalStarted = true;
+        elapsedTime = Math.round((Date.now() - startTime) / 1000);
+
+        if (lastTime != elapsedTime) {
+            //Player who pressed the button
+            if (playerId == "startPlayer1") {
+                player1 = player1 - 1;
+                timerPlayer1.textContent = player1;
+            }
+            if (playerId == "startPlayer2") {
+                player2 = player2 - 1;
+                timerPlayer2.textContent = player2;
+            }
+        }
+        lastTime = elapsedTime;
+    }, 200)
+}
