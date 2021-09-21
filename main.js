@@ -25,7 +25,9 @@ eventListeners();
 function eventListeners() {
     //Version 1 timer
     startButton.addEventListener("click", startTimer);
-    resetButton.addEventListener("click", resetTimer);
+    resetButton.addEventListener("click", () => {
+        resetTimer(clock, timer1);
+    });
     //Version 2 timer
     startButtonPlayer1.addEventListener("click", timerV2);
     resetButtonPlayer1.addEventListener("click", e => { });
@@ -47,11 +49,11 @@ function startTimer(e) {
     }
 }
 
-function resetTimer() {
-    hours = 0;
-    minutes = 0;
-    seconds = 0;
-    timer1.textContent = "00:00:00";
+function resetTimer(clock, timerDisplay) {
+    timerDisplay.textContent = "00:00:00";
+    clock.hours = 0;
+    clock.minutes = 0;
+    clock.seconds = 0;
 }
 
 function timer(clock) {
