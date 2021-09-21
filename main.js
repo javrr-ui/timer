@@ -13,6 +13,13 @@ const startButtonPlayer2 = document.querySelector("#startPlayer2");
 const resetButtonPlayer2 = document.querySelector("#resetPlayer2");
 
 let interval;
+
+let clock = {
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+}
+
 eventListeners();
 
 function eventListeners() {
@@ -30,7 +37,9 @@ function eventListeners() {
 function startTimer(e) {
     const button = e.srcElement;
     if (button.textContent == "Start") {
-        interval = setInterval(timer, 1000);
+        interval = setInterval(function () {
+            timer(clock);
+        }, 1000);
         button.textContent = "Stop";
     } else {
         clearInterval(interval);
@@ -45,33 +54,36 @@ function resetTimer() {
     timer1.textContent = "00:00:00";
 }
 
-function timer() {
-    seconds++;
-    if (seconds == 60) {
-        minutes++;
-        seconds = 0;
+function timer(clock) {
+    clock.seconds++
+    if (clock.seconds == 60) {
+        clock.minutes++;
+        clock.seconds = 0;
     }
 
-    if (minutes == 60) {
-        hours++;
-        minutes = 0;
+    if (clock.minutes == 60) {
+        clock.hours++;
+        clock.minutes = 0;
     }
 
-    timer1.textContent = prettyTime(hours, minutes, seconds);
+    timer1.textContent = prettyTime(clock);
+    console.log(clock);
 }
 
+let hourString = "", minuteString = "", secondString = "";
+function prettyTime(clock) {
+    hourString = clock.hours;
+    minuteString = clock.minutes;
+    secondString = clock.seconds;
 
-function prettyTime(hourString = "", minuteString = "", secondString = "") {
-
-
-    if (hours <= 9) {
-        hourString = "0" + hourString;
+    if (clock.hours <= 9) {
+        hourString = "0" + clock.hours;
     }
-    if (minutes <= 9) {
-        minuteString = "0" + minuteString;
+    if (clock.minutes <= 9) {
+        minuteString = "0" + clock.minutes;
     }
-    if (seconds <= 9) {
-        secondString = "0" + secondString;
+    if (clock.seconds <= 9) {
+        secondString = "0" + clock.seconds;
     }
 
     return hourString + ":" + minuteString + ":" + secondString;
