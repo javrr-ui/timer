@@ -49,3 +49,7 @@ h1 {
     font-family: alarmFont, Arial;
     font-size: 40px;
 }
+
+#timeModal {
+    display: none;
+}
