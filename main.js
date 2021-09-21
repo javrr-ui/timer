@@ -107,12 +107,12 @@ function timerV2(e) {
         if (lastTime != elapsedTime) {
             //Player who pressed the button
             if (playerId == "startPlayer1") {
-                player1 = player1 - 1;
-                timerPlayer1.textContent = player1;
-            }
-            if (playerId == "startPlayer2") {
                 player2 = player2 - 1;
                 timerPlayer2.textContent = player2;
+            }
+            if (playerId == "startPlayer2") {
+                player1 = player1 - 1;
+                timerPlayer1.textContent = player1;
             }
         }
         lastTime = elapsedTime;
