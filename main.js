@@ -13,12 +13,21 @@ const startButtonPlayer2 = document.querySelector("#startPlayer2");
 const resetButtonPlayer2 = document.querySelector("#resetPlayer2");
 
 let interval;
+
+let clock = {
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+}
+
 eventListeners();
 
 function eventListeners() {
     //Version 1 timer
     startButton.addEventListener("click", startTimer);
-    resetButton.addEventListener("click", resetTimer);
+    resetButton.addEventListener("click", () => {
+        resetTimer(clock, timer1);
+    });
     //Version 2 timer
     startButtonPlayer1.addEventListener("click", timerV2);
     resetButtonPlayer1.addEventListener("click", e => { });
@@ -30,7 +39,9 @@ function eventListeners() {
 function startTimer(e) {
     const button = e.srcElement;
     if (button.textContent == "Start") {
-        interval = setInterval(timer, 1000);
+        interval = setInterval(function () {
+            timer(clock);
+        }, 1000);
         button.textContent = "Stop";
     } else {
         clearInterval(interval);
@@ -38,43 +49,43 @@ function startTimer(e) {
     }
 }
 
-function resetTimer() {
-    hours = 0;
-    minutes = 0;
-    seconds = 0;
-    timer1.textContent = "00:00:00";
+function resetTimer(clock, timerDisplay) {
+    timerDisplay.textContent = "00:00:00";
+    clock.hours = 0;
+    clock.minutes = 0;
+    clock.seconds = 0;
 }
 
-function timer() {
-    seconds++;
-    if (seconds == 60) {
-        minutes++;
-        seconds = 0;
+function timer(clock) {
+    clock.seconds++
+    if (clock.seconds == 60) {
+        clock.minutes++;
+        clock.seconds = 0;
     }
 
-    if (minutes == 60) {
-        hours++;
-        minutes = 0;
+    if (clock.minutes == 60) {
+        clock.hours++;
+        clock.minutes = 0;
     }
 
-    timer1.textContent = prettyTime();
-    //console.log(prettyTime())
+    timer1.textContent = prettyTime(clock);
+    console.log(clock);
 }
 
+let hourString = "", minuteString = "", secondString = "";
+function prettyTime(clock) {
+    hourString = clock.hours;
+    minuteString = clock.minutes;
+    secondString = clock.seconds;
 
-function prettyTime() {
-    let hourString = hours,
-        minuteString = minutes,
-        secondString = seconds;
-
-    if (hours <= 9) {
-        hourString = "0" + hourString;
+    if (clock.hours <= 9) {
+        hourString = "0" + clock.hours;
     }
-    if (minutes <= 9) {
-        minuteString = "0" + minuteString;
+    if (clock.minutes <= 9) {
+        minuteString = "0" + clock.minutes;
     }
-    if (seconds <= 9) {
-        secondString = "0" + secondString;
+    if (clock.seconds <= 9) {
+        secondString = "0" + clock.seconds;
     }
 
     return hourString + ":" + minuteString + ":" + secondString;
@@ -116,5 +127,5 @@ function timerV2(e) {
             }
         }
         lastTime = elapsedTime;
-    }, 200)
+    }, 100)
 }
