@@ -57,13 +57,12 @@ function timer() {
         minutes = 0;
     }
 
-    timer1.textContent = prettyTime(hours,minutes,seconds);
-    //console.log(prettyTime())
+    timer1.textContent = prettyTime(hours, minutes, seconds);
 }
 
 
-function prettyTime(hourString="", minuteString="", secondString="") {
-   
+function prettyTime(hourString = "", minuteString = "", secondString = "") {
+
 
     if (hours <= 9) {
         hourString = "0" + hourString;
