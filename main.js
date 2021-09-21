@@ -125,5 +125,5 @@ function timerV2(e) {
             }
         }
         lastTime = elapsedTime;
-    }, 200)
+    }, 100)
 }
